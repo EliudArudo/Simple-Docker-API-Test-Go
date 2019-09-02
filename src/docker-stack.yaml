@@ -1,0 +1,18 @@
+version: "3"
+services:
+  serviceA:
+    image: eliudarudo/go-simple-events-service-a:v0.12
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      replicas: 1  
+      restart_policy: 
+        condition: on-failure
+  serviceB:
+    image: eliudarudo/go-simple-events-service-b:v0.9
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      replicas: 3  
+      restart_policy: 
+        condition: on-failure      
